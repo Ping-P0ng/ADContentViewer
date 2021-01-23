@@ -1,0 +1,1191 @@
+Using server: WIN-4ARGROJLPBQ.main.local:3268
+Directory: Windows Server 2016
+
+dn:CN=Administrators,CN=Builtin,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Administrators
+>description: Administrators have complete and unrestricted access to the computer/domain
+>member: CN=Soft,CN=Users,DC=main,DC=local
+>member: CN=Domain Admins,CN=Users,DC=main,DC=local
+>member: CN=Enterprise Admins,CN=Users,DC=main,DC=local
+>member: CN=Administrator,CN=Users,DC=main,DC=local
+>distinguishedName: CN=Administrators,CN=Builtin,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064242.0Z
+>whenChanged: 20210121181652.0Z
+>uSNCreated: 8200
+>uSNChanged: 68852
+>name: Administrators
+>objectGUID: {17EEE05E-76DB-4DE9-8713-5EEB7A312466}
+>objectSid: S-1-5-32-544
+>sAMAccountName: Administrators
+>sAMAccountType: 536870912
+>groupType: -2147483643
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227065858.0Z
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000416.0Z
+
+dn:CN=Users,CN=Builtin,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Users
+>description: Users are prevented from making accidental or intentional system-wide changes and can run most applications
+>member: CN=Domain Users,CN=Users,DC=main,DC=local
+>member: CN=S-1-5-11,CN=ForeignSecurityPrincipals,DC=main,DC=local
+>member: CN=S-1-5-4,CN=ForeignSecurityPrincipals,DC=main,DC=local
+>distinguishedName: CN=Users,CN=Builtin,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064242.0Z
+>whenChanged: 20201227064348.0Z
+>uSNCreated: 8203
+>uSNChanged: 12381
+>name: Users
+>objectGUID: {5DF3E722-4DF6-45AB-8BFD-4C42B178337C}
+>objectSid: S-1-5-32-545
+>sAMAccountName: Users
+>sAMAccountType: 536870912
+>groupType: -2147483643
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000001.0Z
+
+dn:CN=Guests,CN=Builtin,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Guests
+>description: Guests have the same access as members of the Users group by default, except for the Guest account which is further restricted
+>member: CN=Domain Guests,CN=Users,DC=main,DC=local
+>member: CN=Guest,CN=Users,DC=main,DC=local
+>distinguishedName: CN=Guests,CN=Builtin,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064242.0Z
+>whenChanged: 20201227064348.0Z
+>uSNCreated: 8209
+>uSNChanged: 12383
+>name: Guests
+>objectGUID: {FFE3368B-10A1-447D-8246-41FA2669CB0B}
+>objectSid: S-1-5-32-546
+>sAMAccountName: Guests
+>sAMAccountType: 536870912
+>groupType: -2147483643
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000001.0Z
+
+dn:CN=Print Operators,CN=Builtin,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Print Operators
+>description: Members can administer printers installed on domain controllers
+>distinguishedName: CN=Print Operators,CN=Builtin,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064242.0Z
+>whenChanged: 20201227065858.0Z
+>uSNCreated: 8212
+>uSNChanged: 12770
+>name: Print Operators
+>objectGUID: {68A4BD34-4879-41F0-AE7A-D8A80C8DA814}
+>objectSid: S-1-5-32-550
+>sAMAccountName: Print Operators
+>sAMAccountType: 536870912
+>groupType: -2147483643
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227065858.0Z
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000416.0Z
+
+dn:CN=Backup Operators,CN=Builtin,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Backup Operators
+>description: Backup Operators can override security restrictions for the sole purpose of backing up or restoring files
+>distinguishedName: CN=Backup Operators,CN=Builtin,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064242.0Z
+>whenChanged: 20201227065858.0Z
+>uSNCreated: 8213
+>uSNChanged: 12767
+>name: Backup Operators
+>objectGUID: {91AF430B-FD27-4DF9-A721-99AF2A8E2C26}
+>objectSid: S-1-5-32-551
+>sAMAccountName: Backup Operators
+>sAMAccountType: 536870912
+>groupType: -2147483643
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227065858.0Z
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000416.0Z
+
+dn:CN=Replicator,CN=Builtin,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Replicator
+>description: Supports file replication in a domain
+>distinguishedName: CN=Replicator,CN=Builtin,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064242.0Z
+>whenChanged: 20201227065858.0Z
+>uSNCreated: 8214
+>uSNChanged: 12774
+>name: Replicator
+>objectGUID: {BF5FFED3-4904-455B-BCE9-045A63AE7C82}
+>objectSid: S-1-5-32-552
+>sAMAccountName: Replicator
+>sAMAccountType: 536870912
+>groupType: -2147483643
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227065858.0Z
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000416.0Z
+
+dn:CN=Remote Desktop Users,CN=Builtin,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Remote Desktop Users
+>description: Members in this group are granted the right to logon remotely
+>distinguishedName: CN=Remote Desktop Users,CN=Builtin,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064242.0Z
+>whenChanged: 20201227064242.0Z
+>uSNCreated: 8215
+>uSNChanged: 8215
+>name: Remote Desktop Users
+>objectGUID: {575962A8-A3B0-4000-AAC3-42A6C56266E6}
+>objectSid: S-1-5-32-555
+>sAMAccountName: Remote Desktop Users
+>sAMAccountType: 536870912
+>groupType: -2147483643
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000001.0Z
+
+dn:CN=Network Configuration Operators,CN=Builtin,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Network Configuration Operators
+>description: Members in this group can have some administrative privileges to manage configuration of networking features
+>distinguishedName: CN=Network Configuration Operators,CN=Builtin,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064242.0Z
+>whenChanged: 20201227064242.0Z
+>uSNCreated: 8216
+>uSNChanged: 8216
+>name: Network Configuration Operators
+>objectGUID: {B5AEBDC3-0063-4B50-806A-4E34BBDB9766}
+>objectSid: S-1-5-32-556
+>sAMAccountName: Network Configuration Operators
+>sAMAccountType: 536870912
+>groupType: -2147483643
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000001.0Z
+
+dn:CN=Performance Monitor Users,CN=Builtin,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Performance Monitor Users
+>description: Members of this group can access performance counter data locally and remotely
+>distinguishedName: CN=Performance Monitor Users,CN=Builtin,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064242.0Z
+>whenChanged: 20201227064242.0Z
+>uSNCreated: 8217
+>uSNChanged: 8217
+>name: Performance Monitor Users
+>objectGUID: {E28B7769-1D50-4D87-A8A5-EF3B3D640F8B}
+>objectSid: S-1-5-32-558
+>sAMAccountName: Performance Monitor Users
+>sAMAccountType: 536870912
+>groupType: -2147483643
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000001.0Z
+
+dn:CN=Performance Log Users,CN=Builtin,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Performance Log Users
+>description: Members of this group may schedule logging of performance counters, enable trace providers, and collect event traces both locally and via remote access to this computer
+>distinguishedName: CN=Performance Log Users,CN=Builtin,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064242.0Z
+>whenChanged: 20201227064242.0Z
+>uSNCreated: 8218
+>uSNChanged: 8218
+>name: Performance Log Users
+>objectGUID: {4B1A7D08-C083-4D05-BB22-7AE392E9BE37}
+>objectSid: S-1-5-32-559
+>sAMAccountName: Performance Log Users
+>sAMAccountType: 536870912
+>groupType: -2147483643
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000001.0Z
+
+dn:CN=Distributed COM Users,CN=Builtin,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Distributed COM Users
+>description: Members are allowed to launch, activate and use Distributed COM objects on this machine.
+>distinguishedName: CN=Distributed COM Users,CN=Builtin,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064242.0Z
+>whenChanged: 20201227064242.0Z
+>uSNCreated: 8219
+>uSNChanged: 8219
+>name: Distributed COM Users
+>objectGUID: {5683F498-5779-4632-9FCD-A26C717168C3}
+>objectSid: S-1-5-32-562
+>sAMAccountName: Distributed COM Users
+>sAMAccountType: 536870912
+>groupType: -2147483643
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000001.0Z
+
+dn:CN=IIS_IUSRS,CN=Builtin,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: IIS_IUSRS
+>description: Built-in group used by Internet Information Services.
+>member: CN=S-1-5-17,CN=ForeignSecurityPrincipals,DC=main,DC=local
+>distinguishedName: CN=IIS_IUSRS,CN=Builtin,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064242.0Z
+>whenChanged: 20201227064242.0Z
+>uSNCreated: 8220
+>uSNChanged: 8223
+>name: IIS_IUSRS
+>objectGUID: {8E212450-1BA6-4FA4-B54B-71B315471D2A}
+>objectSid: S-1-5-32-568
+>sAMAccountName: IIS_IUSRS
+>sAMAccountType: 536870912
+>groupType: -2147483643
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000001.0Z
+
+dn:CN=Cryptographic Operators,CN=Builtin,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Cryptographic Operators
+>description: Members are authorized to perform cryptographic operations.
+>distinguishedName: CN=Cryptographic Operators,CN=Builtin,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064242.0Z
+>whenChanged: 20201227064242.0Z
+>uSNCreated: 8224
+>uSNChanged: 8224
+>name: Cryptographic Operators
+>objectGUID: {9A9B45CE-62DD-4F40-B178-4C8F352ABF5C}
+>objectSid: S-1-5-32-569
+>sAMAccountName: Cryptographic Operators
+>sAMAccountType: 536870912
+>groupType: -2147483643
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000001.0Z
+
+dn:CN=Event Log Readers,CN=Builtin,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Event Log Readers
+>description: Members of this group can read event logs from local machine
+>distinguishedName: CN=Event Log Readers,CN=Builtin,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064242.0Z
+>whenChanged: 20201227064242.0Z
+>uSNCreated: 8225
+>uSNChanged: 8225
+>name: Event Log Readers
+>objectGUID: {1C87927A-2983-4CED-8018-4FA973A4DDC6}
+>objectSid: S-1-5-32-573
+>sAMAccountName: Event Log Readers
+>sAMAccountType: 536870912
+>groupType: -2147483643
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000001.0Z
+
+dn:CN=Certificate Service DCOM Access,CN=Builtin,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Certificate Service DCOM Access
+>description: Members of this group are allowed to connect to Certification Authorities in the enterprise
+>distinguishedName: CN=Certificate Service DCOM Access,CN=Builtin,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064242.0Z
+>whenChanged: 20201227064242.0Z
+>uSNCreated: 8226
+>uSNChanged: 8226
+>name: Certificate Service DCOM Access
+>objectGUID: {812E48B9-890E-4D67-91E1-8820765C6488}
+>objectSid: S-1-5-32-574
+>sAMAccountName: Certificate Service DCOM Access
+>sAMAccountType: 536870912
+>groupType: -2147483643
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000001.0Z
+
+dn:CN=RDS Remote Access Servers,CN=Builtin,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: RDS Remote Access Servers
+>description: Servers in this group enable users of RemoteApp programs and personal virtual desktops access to these resources. In Internet-facing deployments, these servers are typically deployed in an edge network. This group needs to be populated on servers running RD Connection Broker. RD Gateway servers and RD Web Access servers used in the deployment need to be in this group.
+>distinguishedName: CN=RDS Remote Access Servers,CN=Builtin,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064242.0Z
+>whenChanged: 20201227064242.0Z
+>uSNCreated: 8227
+>uSNChanged: 8227
+>name: RDS Remote Access Servers
+>objectGUID: {792403C2-9963-4837-B52A-2F0921C604F2}
+>objectSid: S-1-5-32-575
+>sAMAccountName: RDS Remote Access Servers
+>sAMAccountType: 536870912
+>groupType: -2147483643
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000001.0Z
+
+dn:CN=RDS Endpoint Servers,CN=Builtin,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: RDS Endpoint Servers
+>description: Servers in this group run virtual machines and host sessions where users RemoteApp programs and personal virtual desktops run. This group needs to be populated on servers running RD Connection Broker. RD Session Host servers and RD Virtualization Host servers used in the deployment need to be in this group.
+>distinguishedName: CN=RDS Endpoint Servers,CN=Builtin,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064242.0Z
+>whenChanged: 20201227064242.0Z
+>uSNCreated: 8228
+>uSNChanged: 8228
+>name: RDS Endpoint Servers
+>objectGUID: {8FFE26D8-3010-4B35-A058-C3C6F51004AF}
+>objectSid: S-1-5-32-576
+>sAMAccountName: RDS Endpoint Servers
+>sAMAccountType: 536870912
+>groupType: -2147483643
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000001.0Z
+
+dn:CN=RDS Management Servers,CN=Builtin,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: RDS Management Servers
+>description: Servers in this group can perform routine administrative actions on servers running Remote Desktop Services. This group needs to be populated on all servers in a Remote Desktop Services deployment. The servers running the RDS Central Management service must be included in this group.
+>distinguishedName: CN=RDS Management Servers,CN=Builtin,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064242.0Z
+>whenChanged: 20201227064242.0Z
+>uSNCreated: 8229
+>uSNChanged: 8229
+>name: RDS Management Servers
+>objectGUID: {6C67D816-E10B-4371-9214-100D7CDC6F73}
+>objectSid: S-1-5-32-577
+>sAMAccountName: RDS Management Servers
+>sAMAccountType: 536870912
+>groupType: -2147483643
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000001.0Z
+
+dn:CN=Hyper-V Administrators,CN=Builtin,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Hyper-V Administrators
+>description: Members of this group have complete and unrestricted access to all features of Hyper-V.
+>distinguishedName: CN=Hyper-V Administrators,CN=Builtin,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064242.0Z
+>whenChanged: 20201227064242.0Z
+>uSNCreated: 8230
+>uSNChanged: 8230
+>name: Hyper-V Administrators
+>objectGUID: {B38DE4CE-43BE-4D63-9DE5-EBA83287B8C4}
+>objectSid: S-1-5-32-578
+>sAMAccountName: Hyper-V Administrators
+>sAMAccountType: 536870912
+>groupType: -2147483643
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000001.0Z
+
+dn:CN=Access Control Assistance Operators,CN=Builtin,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Access Control Assistance Operators
+>description: Members of this group can remotely query authorization attributes and permissions for resources on this computer.
+>distinguishedName: CN=Access Control Assistance Operators,CN=Builtin,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064242.0Z
+>whenChanged: 20201227064242.0Z
+>uSNCreated: 8231
+>uSNChanged: 8231
+>name: Access Control Assistance Operators
+>objectGUID: {E8B311B1-F84F-43E6-808C-32CA575A2E38}
+>objectSid: S-1-5-32-579
+>sAMAccountName: Access Control Assistance Operators
+>sAMAccountType: 536870912
+>groupType: -2147483643
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000001.0Z
+
+dn:CN=Remote Management Users,CN=Builtin,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Remote Management Users
+>description: Members of this group can access WMI resources over management protocols (such as WS-Management via the Windows Remote Management service). This applies only to WMI namespaces that grant access to the user.
+>distinguishedName: CN=Remote Management Users,CN=Builtin,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064242.0Z
+>whenChanged: 20201227064242.0Z
+>uSNCreated: 8232
+>uSNChanged: 8232
+>name: Remote Management Users
+>objectGUID: {A4827AD3-018C-44D7-BDCA-30EBF53B69EC}
+>objectSid: S-1-5-32-580
+>sAMAccountName: Remote Management Users
+>sAMAccountType: 536870912
+>groupType: -2147483643
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000001.0Z
+
+dn:CN=System Managed Accounts Group,CN=Builtin,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: System Managed Accounts Group
+>description: Members of this group are managed by the system.
+>member: CN=DefaultAccount,CN=Users,DC=main,DC=local
+>distinguishedName: CN=System Managed Accounts Group,CN=Builtin,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064242.0Z
+>whenChanged: 20201227064242.0Z
+>uSNCreated: 8233
+>uSNChanged: 8235
+>name: System Managed Accounts Group
+>objectGUID: {61F2951F-8159-4629-BA61-3758E928C039}
+>objectSid: S-1-5-32-581
+>sAMAccountName: System Managed Accounts Group
+>sAMAccountType: 536870912
+>groupType: -2147483643
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000001.0Z
+
+dn:CN=Storage Replica Administrators,CN=Builtin,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Storage Replica Administrators
+>description: Members of this group have complete and unrestricted access to all features of Storage Replica.
+>distinguishedName: CN=Storage Replica Administrators,CN=Builtin,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064242.0Z
+>whenChanged: 20201227064242.0Z
+>uSNCreated: 8236
+>uSNChanged: 8236
+>name: Storage Replica Administrators
+>objectGUID: {6DEEE892-EB28-494D-B5A8-A5E924B8E08C}
+>objectSid: S-1-5-32-582
+>sAMAccountName: Storage Replica Administrators
+>sAMAccountType: 536870912
+>groupType: -2147483643
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000001.0Z
+
+dn:CN=Domain Computers,CN=Users,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Domain Computers
+>description: All workstations and servers joined to the domain
+>distinguishedName: CN=Domain Computers,CN=Users,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064348.0Z
+>whenChanged: 20201227064348.0Z
+>uSNCreated: 12330
+>uSNChanged: 12332
+>name: Domain Computers
+>objectGUID: {C1FC5919-9365-4125-AAA2-85F3FB4CFEC3}
+>objectSid: S-1-5-21-1627550030-2976912175-810633085-515
+>sAMAccountName: Domain Computers
+>sAMAccountType: 268435456
+>groupType: -2147483646
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000001.0Z
+
+dn:CN=Domain Controllers,CN=Users,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Domain Controllers
+>description: All domain controllers in the domain
+>distinguishedName: CN=Domain Controllers,CN=Users,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064348.0Z
+>whenChanged: 20201227065858.0Z
+>uSNCreated: 12333
+>memberOf: CN=Denied RODC Password Replication Group,CN=Users,DC=main,DC=local
+>uSNChanged: 12778
+>name: Domain Controllers
+>objectGUID: {AA549226-EEB3-42C2-8687-B69DE52573F5}
+>objectSid: S-1-5-21-1627550030-2976912175-810633085-516
+>sAMAccountName: Domain Controllers
+>sAMAccountType: 268435456
+>groupType: -2147483646
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227065858.0Z
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000416.0Z
+
+dn:CN=Schema Admins,CN=Users,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Schema Admins
+>description: Designated administrators of the schema
+>member: CN=Administrator,CN=Users,DC=main,DC=local
+>distinguishedName: CN=Schema Admins,CN=Users,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064348.0Z
+>whenChanged: 20201227065858.0Z
+>uSNCreated: 12336
+>memberOf: CN=Denied RODC Password Replication Group,CN=Users,DC=main,DC=local
+>uSNChanged: 12765
+>name: Schema Admins
+>objectGUID: {AE2B44F2-95A6-402D-B396-A0BA63EBFEBA}
+>objectSid: S-1-5-21-1627550030-2976912175-810633085-518
+>sAMAccountName: Schema Admins
+>sAMAccountType: 268435456
+>groupType: -2147483640
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227065858.0Z
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000416.0Z
+
+dn:CN=Enterprise Admins,CN=Users,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Enterprise Admins
+>description: Designated administrators of the enterprise
+>member: CN=Administrator,CN=Users,DC=main,DC=local
+>distinguishedName: CN=Enterprise Admins,CN=Users,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064348.0Z
+>whenChanged: 20201227065858.0Z
+>uSNCreated: 12339
+>memberOf: CN=Denied RODC Password Replication Group,CN=Users,DC=main,DC=local
+>memberOf: CN=Administrators,CN=Builtin,DC=main,DC=local
+>uSNChanged: 12761
+>name: Enterprise Admins
+>objectGUID: {DEEA442E-9555-4F71-8CD2-F080050E7F34}
+>objectSid: S-1-5-21-1627550030-2976912175-810633085-519
+>sAMAccountName: Enterprise Admins
+>sAMAccountType: 268435456
+>groupType: -2147483640
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227065858.0Z
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000416.0Z
+
+dn:CN=Cert Publishers,CN=Users,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Cert Publishers
+>description: Members of this group are permitted to publish certificates to the directory
+>distinguishedName: CN=Cert Publishers,CN=Users,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064348.0Z
+>whenChanged: 20201227064348.0Z
+>uSNCreated: 12342
+>memberOf: CN=Denied RODC Password Replication Group,CN=Users,DC=main,DC=local
+>uSNChanged: 12344
+>name: Cert Publishers
+>objectGUID: {7BB52A07-D798-476E-BE58-41B24C95143F}
+>objectSid: S-1-5-21-1627550030-2976912175-810633085-517
+>sAMAccountName: Cert Publishers
+>sAMAccountType: 536870912
+>groupType: -2147483644
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000001.0Z
+
+dn:CN=Domain Admins,CN=Users,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Domain Admins
+>description: Designated administrators of the domain
+>member: CN=Administrator,CN=Users,DC=main,DC=local
+>distinguishedName: CN=Domain Admins,CN=Users,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064348.0Z
+>whenChanged: 20201227065858.0Z
+>uSNCreated: 12345
+>memberOf: CN=Denied RODC Password Replication Group,CN=Users,DC=main,DC=local
+>memberOf: CN=Administrators,CN=Builtin,DC=main,DC=local
+>uSNChanged: 12762
+>name: Domain Admins
+>objectGUID: {3F002A49-EE7D-40FF-9EAC-39C9FF31D486}
+>objectSid: S-1-5-21-1627550030-2976912175-810633085-512
+>sAMAccountName: Domain Admins
+>sAMAccountType: 268435456
+>groupType: -2147483646
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227065858.0Z
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000416.0Z
+
+dn:CN=Domain Users,CN=Users,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Domain Users
+>description: All domain users
+>distinguishedName: CN=Domain Users,CN=Users,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064348.0Z
+>whenChanged: 20201227064348.0Z
+>uSNCreated: 12348
+>memberOf: CN=Users,CN=Builtin,DC=main,DC=local
+>uSNChanged: 12350
+>name: Domain Users
+>objectGUID: {21DF1350-363F-4A75-BABA-E3227147312E}
+>objectSid: S-1-5-21-1627550030-2976912175-810633085-513
+>sAMAccountName: Domain Users
+>sAMAccountType: 268435456
+>groupType: -2147483646
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000001.0Z
+
+dn:CN=Domain Guests,CN=Users,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Domain Guests
+>description: All domain guests
+>distinguishedName: CN=Domain Guests,CN=Users,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064348.0Z
+>whenChanged: 20201227064348.0Z
+>uSNCreated: 12351
+>memberOf: CN=Guests,CN=Builtin,DC=main,DC=local
+>uSNChanged: 12353
+>name: Domain Guests
+>objectGUID: {E6CB7117-A66B-4872-8E25-3BA397A5CBC5}
+>objectSid: S-1-5-21-1627550030-2976912175-810633085-514
+>sAMAccountName: Domain Guests
+>sAMAccountType: 268435456
+>groupType: -2147483646
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000001.0Z
+
+dn:CN=Group Policy Creator Owners,CN=Users,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Group Policy Creator Owners
+>description: Members in this group can modify group policy for the domain
+>member: CN=Administrator,CN=Users,DC=main,DC=local
+>distinguishedName: CN=Group Policy Creator Owners,CN=Users,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064348.0Z
+>whenChanged: 20201227064348.0Z
+>uSNCreated: 12354
+>memberOf: CN=Denied RODC Password Replication Group,CN=Users,DC=main,DC=local
+>uSNChanged: 12391
+>name: Group Policy Creator Owners
+>objectGUID: {1108EC14-7377-4986-9715-6E58006C05D9}
+>objectSid: S-1-5-21-1627550030-2976912175-810633085-520
+>sAMAccountName: Group Policy Creator Owners
+>sAMAccountType: 268435456
+>groupType: -2147483646
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000001.0Z
+
+dn:CN=RAS and IAS Servers,CN=Users,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: RAS and IAS Servers
+>description: Servers in this group can access remote access properties of users
+>distinguishedName: CN=RAS and IAS Servers,CN=Users,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064348.0Z
+>whenChanged: 20201227064348.0Z
+>uSNCreated: 12357
+>uSNChanged: 12359
+>name: RAS and IAS Servers
+>objectGUID: {F77A4B40-A6E6-490F-8061-81D88B85005F}
+>objectSid: S-1-5-21-1627550030-2976912175-810633085-553
+>sAMAccountName: RAS and IAS Servers
+>sAMAccountType: 536870912
+>groupType: -2147483644
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000001.0Z
+
+dn:CN=Server Operators,CN=Builtin,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Server Operators
+>description: Members can administer domain servers
+>member: CN=Dev,CN=Users,DC=main,DC=local
+>distinguishedName: CN=Server Operators,CN=Builtin,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064348.0Z
+>whenChanged: 20210121181744.0Z
+>uSNCreated: 12360
+>uSNChanged: 68903
+>name: Server Operators
+>objectGUID: {101B161C-5F97-4D6B-8B4B-46ED3A1D614A}
+>objectSid: S-1-5-32-549
+>sAMAccountName: Server Operators
+>sAMAccountType: 536870912
+>groupType: -2147483643
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227065858.0Z
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000416.0Z
+
+dn:CN=Account Operators,CN=Builtin,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Account Operators
+>description: Members can administer domain user and group accounts
+>distinguishedName: CN=Account Operators,CN=Builtin,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064348.0Z
+>whenChanged: 20201227065858.0Z
+>uSNCreated: 12363
+>uSNChanged: 12775
+>name: Account Operators
+>objectGUID: {D5FD82DC-2B74-4FC2-85C6-4F9062D5C1B8}
+>objectSid: S-1-5-32-548
+>sAMAccountName: Account Operators
+>sAMAccountType: 536870912
+>groupType: -2147483643
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227065858.0Z
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000416.0Z
+
+dn:CN=Pre-Windows 2000 Compatible Access,CN=Builtin,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Pre-Windows 2000 Compatible Access
+>description: A backward compatibility group which allows read access on all users and groups in the domain
+>member: CN=S-1-5-11,CN=ForeignSecurityPrincipals,DC=main,DC=local
+>distinguishedName: CN=Pre-Windows 2000 Compatible Access,CN=Builtin,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064348.0Z
+>whenChanged: 20201227064348.0Z
+>uSNCreated: 12366
+>uSNChanged: 12393
+>name: Pre-Windows 2000 Compatible Access
+>objectGUID: {C10C9D69-E5CA-4205-8ADB-6A9395F7DF3A}
+>objectSid: S-1-5-32-554
+>sAMAccountName: Pre-Windows 2000 Compatible Access
+>sAMAccountType: 536870912
+>groupType: -2147483643
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000001.0Z
+
+dn:CN=Incoming Forest Trust Builders,CN=Builtin,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Incoming Forest Trust Builders
+>description: Members of this group can create incoming, one-way trusts to this forest
+>distinguishedName: CN=Incoming Forest Trust Builders,CN=Builtin,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064348.0Z
+>whenChanged: 20201227064348.0Z
+>uSNCreated: 12369
+>uSNChanged: 12371
+>name: Incoming Forest Trust Builders
+>objectGUID: {C9EE76A0-5634-463F-AE5D-1AE71AD3FD5F}
+>objectSid: S-1-5-32-557
+>sAMAccountName: Incoming Forest Trust Builders
+>sAMAccountType: 536870912
+>groupType: -2147483643
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000001.0Z
+
+dn:CN=Windows Authorization Access Group,CN=Builtin,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Windows Authorization Access Group
+>description: Members of this group have access to the computed tokenGroupsGlobalAndUniversal attribute on User objects
+>member: CN=S-1-5-9,CN=ForeignSecurityPrincipals,DC=main,DC=local
+>distinguishedName: CN=Windows Authorization Access Group,CN=Builtin,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064348.0Z
+>whenChanged: 20201227064348.0Z
+>uSNCreated: 12372
+>uSNChanged: 12396
+>name: Windows Authorization Access Group
+>objectGUID: {41BD2E83-F577-44A3-A028-4AE926BBD0D0}
+>objectSid: S-1-5-32-560
+>sAMAccountName: Windows Authorization Access Group
+>sAMAccountType: 536870912
+>groupType: -2147483643
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000001.0Z
+
+dn:CN=Terminal Server License Servers,CN=Builtin,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Terminal Server License Servers
+>description: Members of this group can update user accounts in Active Directory with information about license issuance, for the purpose of tracking and reporting TS Per User CAL usage
+>distinguishedName: CN=Terminal Server License Servers,CN=Builtin,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064348.0Z
+>whenChanged: 20201227064348.0Z
+>uSNCreated: 12375
+>uSNChanged: 12377
+>name: Terminal Server License Servers
+>objectGUID: {591D29A4-DA89-4534-9A02-35E62061F14B}
+>objectSid: S-1-5-32-561
+>sAMAccountName: Terminal Server License Servers
+>sAMAccountType: 536870912
+>groupType: -2147483643
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000001.0Z
+
+dn:CN=Allowed RODC Password Replication Group,CN=Users,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Allowed RODC Password Replication Group
+>description: Members in this group can have their passwords replicated to all read-only domain controllers in the domain
+>distinguishedName: CN=Allowed RODC Password Replication Group,CN=Users,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064348.0Z
+>whenChanged: 20201227064348.0Z
+>uSNCreated: 12402
+>uSNChanged: 12404
+>name: Allowed RODC Password Replication Group
+>objectGUID: {D7FAE60B-5F06-4B09-A950-E07094C7E4DD}
+>objectSid: S-1-5-21-1627550030-2976912175-810633085-571
+>sAMAccountName: Allowed RODC Password Replication Group
+>sAMAccountType: 536870912
+>groupType: -2147483644
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000001.0Z
+
+dn:CN=Denied RODC Password Replication Group,CN=Users,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Denied RODC Password Replication Group
+>description: Members in this group cannot have their passwords replicated to any read-only domain controllers in the domain
+>member: CN=Read-only Domain Controllers,CN=Users,DC=main,DC=local
+>member: CN=Group Policy Creator Owners,CN=Users,DC=main,DC=local
+>member: CN=Domain Admins,CN=Users,DC=main,DC=local
+>member: CN=Cert Publishers,CN=Users,DC=main,DC=local
+>member: CN=Enterprise Admins,CN=Users,DC=main,DC=local
+>member: CN=Schema Admins,CN=Users,DC=main,DC=local
+>member: CN=Domain Controllers,CN=Users,DC=main,DC=local
+>member: CN=krbtgt,CN=Users,DC=main,DC=local
+>distinguishedName: CN=Denied RODC Password Replication Group,CN=Users,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064348.0Z
+>whenChanged: 20201227064348.0Z
+>uSNCreated: 12405
+>uSNChanged: 12433
+>name: Denied RODC Password Replication Group
+>objectGUID: {0F46D89D-7BDE-4B7D-8019-821018972F70}
+>objectSid: S-1-5-21-1627550030-2976912175-810633085-572
+>sAMAccountName: Denied RODC Password Replication Group
+>sAMAccountType: 536870912
+>groupType: -2147483644
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000001.0Z
+
+dn:CN=Read-only Domain Controllers,CN=Users,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Read-only Domain Controllers
+>description: Members of this group are Read-Only Domain Controllers in the domain
+>distinguishedName: CN=Read-only Domain Controllers,CN=Users,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064348.0Z
+>whenChanged: 20201227065858.0Z
+>uSNCreated: 12419
+>memberOf: CN=Denied RODC Password Replication Group,CN=Users,DC=main,DC=local
+>uSNChanged: 12779
+>name: Read-only Domain Controllers
+>objectGUID: {7E266F94-17D0-40D7-A4A7-C19F189A9C86}
+>objectSid: S-1-5-21-1627550030-2976912175-810633085-521
+>sAMAccountName: Read-only Domain Controllers
+>sAMAccountType: 268435456
+>groupType: -2147483646
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227065858.0Z
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000416.0Z
+
+dn:CN=Enterprise Read-only Domain Controllers,CN=Users,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Enterprise Read-only Domain Controllers
+>description: Members of this group are Read-Only Domain Controllers in the enterprise
+>distinguishedName: CN=Enterprise Read-only Domain Controllers,CN=Users,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064348.0Z
+>whenChanged: 20201227064348.0Z
+>uSNCreated: 12429
+>uSNChanged: 12431
+>name: Enterprise Read-only Domain Controllers
+>objectGUID: {0476C56E-8CE7-4E71-ACD7-BE7BEE018970}
+>objectSid: S-1-5-21-1627550030-2976912175-810633085-498
+>sAMAccountName: Enterprise Read-only Domain Controllers
+>sAMAccountType: 268435456
+>groupType: -2147483640
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000001.0Z
+
+dn:CN=Cloneable Domain Controllers,CN=Users,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Cloneable Domain Controllers
+>description: Members of this group that are domain controllers may be cloned.
+>distinguishedName: CN=Cloneable Domain Controllers,CN=Users,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064348.0Z
+>whenChanged: 20201227064348.0Z
+>uSNCreated: 12440
+>uSNChanged: 12442
+>name: Cloneable Domain Controllers
+>objectGUID: {2CDEFB01-1F7C-4A1C-9186-35BD7C7C86BA}
+>objectSid: S-1-5-21-1627550030-2976912175-810633085-522
+>sAMAccountName: Cloneable Domain Controllers
+>sAMAccountType: 268435456
+>groupType: -2147483646
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000001.0Z
+
+dn:CN=Protected Users,CN=Users,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Protected Users
+>description: Members of this group are afforded additional protections against authentication security threats. See http://go.microsoft.com/fwlink/?LinkId=298939 for more information.
+>distinguishedName: CN=Protected Users,CN=Users,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064348.0Z
+>whenChanged: 20201227064348.0Z
+>uSNCreated: 12445
+>uSNChanged: 12447
+>name: Protected Users
+>objectGUID: {F6EDCD63-A4AD-4D75-9FE2-AF75916428CA}
+>objectSid: S-1-5-21-1627550030-2976912175-810633085-525
+>sAMAccountName: Protected Users
+>sAMAccountType: 268435456
+>groupType: -2147483646
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000001.0Z
+
+dn:CN=Key Admins,CN=Users,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Key Admins
+>description: Members of this group can perform administrative actions on key objects within the domain.
+>distinguishedName: CN=Key Admins,CN=Users,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064348.0Z
+>whenChanged: 20201227064348.0Z
+>uSNCreated: 12450
+>uSNChanged: 12452
+>name: Key Admins
+>objectGUID: {7B0AE9E3-A50D-416B-B3E7-D203768E5681}
+>objectSid: S-1-5-21-1627550030-2976912175-810633085-526
+>sAMAccountName: Key Admins
+>sAMAccountType: 268435456
+>groupType: -2147483646
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000001.0Z
+
+dn:CN=Enterprise Key Admins,CN=Users,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Enterprise Key Admins
+>description: Members of this group can perform administrative actions on key objects within the forest.
+>distinguishedName: CN=Enterprise Key Admins,CN=Users,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064348.0Z
+>whenChanged: 20201227064348.0Z
+>uSNCreated: 12453
+>uSNChanged: 12455
+>name: Enterprise Key Admins
+>objectGUID: {B3E4B6AF-781E-42C7-A2E8-6613038C8D8E}
+>objectSid: S-1-5-21-1627550030-2976912175-810633085-527
+>sAMAccountName: Enterprise Key Admins
+>sAMAccountType: 268435456
+>groupType: -2147483640
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 20201227064348.0Z
+>dSCorePropagationData: 16010101000001.0Z
+
+dn:CN=DnsAdmins,CN=Users,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: DnsAdmins
+>description: DNS Administrators Group
+>distinguishedName: CN=DnsAdmins,CN=Users,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064428.0Z
+>whenChanged: 20201227064428.0Z
+>uSNCreated: 12483
+>uSNChanged: 12485
+>name: DnsAdmins
+>objectGUID: {EBB4B299-7520-483E-8DCB-0B309A8549DD}
+>objectSid: S-1-5-21-1627550030-2976912175-810633085-1101
+>sAMAccountName: DnsAdmins
+>sAMAccountType: 536870912
+>groupType: -2147483644
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 16010101000000.0Z
+
+dn:CN=DnsUpdateProxy,CN=Users,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: DnsUpdateProxy
+>description: DNS clients who are permitted to perform dynamic updates on behalf of some other clients (such as DHCP servers).
+>distinguishedName: CN=DnsUpdateProxy,CN=Users,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20201227064428.0Z
+>whenChanged: 20201227064428.0Z
+>uSNCreated: 12488
+>uSNChanged: 12488
+>name: DnsUpdateProxy
+>objectGUID: {108FDC33-0E4B-4D5D-8A4B-A34B96831B75}
+>objectSid: S-1-5-21-1627550030-2976912175-810633085-1102
+>sAMAccountName: DnsUpdateProxy
+>sAMAccountType: 268435456
+>groupType: -2147483646
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 16010101000000.0Z
+
+dn:CN=Soft,CN=Users,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Soft
+>member: CN=adel ballinger,OU=Staff,DC=main,DC=local
+>member: CN=adjei novak,OU=Staff,DC=main,DC=local
+>member: CN=caine dias,OU=Staff,DC=main,DC=local
+>member: CN=canfield diab,OU=Staff,DC=main,DC=local
+>member: CN=cartwright dangol,OU=Staff,DC=main,DC=local
+>member: CN=carvalho diehl,OU=Staff,DC=main,DC=local
+>member: CN=adler pangan,OU=Staff,DC=main,DC=local
+>member: CN=barot delfin,OU=Staff,DC=main,DC=local
+>member: CN=baer downie,OU=Staff,DC=main,DC=local
+>member: CN=addison swenson,OU=Staff,DC=main,DC=local
+>member: CN=bachman donahue,OU=Staff,DC=main,DC=local
+>member: CN=adamson palm,OU=Staff,DC=main,DC=local
+>member: CN=carranza dawood,OU=Staff,DC=main,DC=local
+>member: CN=eads deering,OU=Staff,DC=main,DC=local
+>member: CN=cater dong,OU=Staff,DC=main,DC=local
+>member: CN=camara dasgupta,OU=Staff,DC=main,DC=local
+>member: CN=castleberry duncan,OU=Staff,DC=main,DC=local
+>member: CN=adamson quiroga,OU=Staff,DC=main,DC=local
+>member: CN=adler withrow,OU=Staff,DC=main,DC=local
+>member: CN=bartholomew davies,OU=Staff,DC=main,DC=local
+>member: CN=adcock dabney,OU=Staff,DC=main,DC=local
+>member: CN=adcock gilley,OU=Staff,DC=main,DC=local
+>member: CN=adamson towne,OU=Staff,DC=main,DC=local
+>member: CN=barrows donegan,OU=Staff,DC=main,DC=local
+>member: CN=farhat duff,OU=Staff,DC=main,DC=local
+>member: CN=callender doank,OU=HR,DC=main,DC=local
+>member: CN=farooq delacruz,OU=HR,DC=main,DC=local
+>member: CN=canales duggan,OU=IT,DC=main,DC=local
+>member: CN=Administrator,CN=Users,DC=main,DC=local
+>distinguishedName: CN=Soft,CN=Users,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20210121181617.0Z
+>whenChanged: 20210121181652.0Z
+>uSNCreated: 68817
+>memberOf: CN=Administrators,CN=Builtin,DC=main,DC=local
+>uSNChanged: 68849
+>name: Soft
+>objectGUID: {F4D0B11F-0740-4225-AE0E-C2EAE2C7DD5B}
+>objectSid: S-1-5-21-1627550030-2976912175-810633085-8070
+>sAMAccountName: Soft
+>sAMAccountType: 268435456
+>groupType: -2147483646
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 16010101000000.0Z
+
+dn:CN=Dev,CN=Users,DC=main,DC=local
+>objectClass: top
+>objectClass: group
+>cn: Dev
+>member: CN=french ag,OU=Staff,DC=main,DC=local
+>member: CN=freeman vasquez,OU=Staff,DC=main,DC=local
+>member: CN=frazier aguinaldo,OU=Staff,DC=main,DC=local
+>member: CN=franklin hoover,OU=Staff,DC=main,DC=local
+>member: CN=frazer wilde,OU=Staff,DC=main,DC=local
+>member: CN=freeman mendenhall,OU=Staff,DC=main,DC=local
+>member: CN=frizzell lange,OU=Staff,DC=main,DC=local
+>member: CN=fry bernstein,OU=Staff,DC=main,DC=local
+>member: CN=frantz stegall,OU=Staff,DC=main,DC=local
+>member: CN=freeman pender,OU=Staff,DC=main,DC=local
+>member: CN=frazier thorson,OU=Staff,DC=main,DC=local
+>member: CN=freitas hijazi,OU=Staff,DC=main,DC=local
+>member: CN=frey kearney,OU=Staff,DC=main,DC=local
+>member: CN=franklin cowles,OU=Staff,DC=main,DC=local
+>member: CN=frick pyles,OU=Staff,DC=main,DC=local
+>member: CN=franklin malla,OU=Staff,DC=main,DC=local
+>member: CN=freed perales,OU=Staff,DC=main,DC=local
+>member: CN=friday goulet,OU=Staff,DC=main,DC=local
+>member: CN=fredericks justice,OU=Staff,DC=main,DC=local
+>member: CN=friday chow,OU=Staff,DC=main,DC=local
+>member: CN=frampton esposito,OU=Staff,DC=main,DC=local
+>member: CN=friel pulliam,OU=Staff,DC=main,DC=local
+>member: CN=freeman shop,OU=Staff,DC=main,DC=local
+>member: CN=freedman valera,OU=Staff,DC=main,DC=local
+>member: CN=freedman anwar,OU=Staff,DC=main,DC=local
+>member: CN=friedrich belcher,OU=Staff,DC=main,DC=local
+>member: CN=frampton hyder,OU=Staff,DC=main,DC=local
+>member: CN=franklin giese,OU=Staff,DC=main,DC=local
+>member: CN=frazier cheung,OU=Staff,DC=main,DC=local
+>member: CN=frith gila,OU=Staff,DC=main,DC=local
+>member: CN=friday sagun,OU=Staff,DC=main,DC=local
+>member: CN=fredrickson rahman,OU=Staff,DC=main,DC=local
+>member: CN=frost talwar,OU=Staff,DC=main,DC=local
+>member: CN=frey dye,OU=Staff,DC=main,DC=local
+>member: CN=freeman singletary,OU=Staff,DC=main,DC=local
+>member: CN=fry pasion,OU=Staff,DC=main,DC=local
+>member: CN=friday ferrari,OU=Staff,DC=main,DC=local
+>member: CN=frey cates,OU=Staff,DC=main,DC=local
+>member: CN=freedman stinnett,OU=Staff,DC=main,DC=local
+>member: CN=frith deshmukh,OU=HR,DC=main,DC=local
+>member: CN=frick francis,OU=Admin,DC=main,DC=local
+>member: CN=frazier albertson,OU=Admin,DC=main,DC=local
+>distinguishedName: CN=Dev,CN=Users,DC=main,DC=local
+>instanceType: 4
+>whenCreated: 20210121181709.0Z
+>whenChanged: 20210121181744.0Z
+>uSNCreated: 68855
+>memberOf: CN=Server Operators,CN=Builtin,DC=main,DC=local
+>uSNChanged: 68900
+>name: Dev
+>objectGUID: {C6C91190-8F43-4B7F-B0B4-1F09DD976313}
+>objectSid: S-1-5-21-1627550030-2976912175-810633085-8071
+>sAMAccountName: Dev
+>sAMAccountType: 268435456
+>groupType: -2147483646
+>objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=main,DC=local
+>dSCorePropagationData: 16010101000000.0Z
+
+
+51 Objects returned
