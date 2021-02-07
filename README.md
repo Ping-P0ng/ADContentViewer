@@ -39,3 +39,11 @@ Groups page.
 Info object page.
 
 ![Alt text](/image/user_info.png?raw=true "Info object page")
+
+Tools page.
+
+Two formats are used to update hashes:
+- pwd
+- NT:password (output hashcat)
+
+![Alt text](/image/tools.png?raw=true "Tools page")

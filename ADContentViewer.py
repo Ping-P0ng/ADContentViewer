@@ -23,7 +23,8 @@ MainPageStart = """<html><head>
 <input type="submit" name="action" value="H" style=" background-color: Transparent;background-repeat:no-repeat;border: none;cursor:pointer;overflow: hidden;outline:none;height: 7%;width: 100%;color: white;font-size: x-large;font-family: cursive;font-style: normal;"/>
 <input type="submit" name="action" value="U" style=" background-color: Transparent;background-repeat:no-repeat;border: none;cursor:pointer;overflow: hidden;outline:none;height: 7%;width: 100%;color: white;font-size: x-large;font-family: cursive;font-style: normal;"/>
 <input type="submit" name="action" value="G" style=" background-color: Transparent;background-repeat:no-repeat;border: none;cursor:pointer;overflow: hidden;outline:none;height: 7%;width: 100%;color: white;font-size: x-large;font-family: cursive;font-style: normal;"/>
-<input type="submit" name="action" value="C" style=" background-color: Transparent;background-repeat:no-repeat;border: none;cursor:pointer;overflow: hidden;outline:none;height: 7%;width: 100%;color: white;font-size: x-large;font-family: cursive;font-style: normal;"	/>
+<input type="submit" name="action" value="C" style=" background-color: Transparent;background-repeat:no-repeat;border: none;cursor:pointer;overflow: hidden;outline:none;height: 7%;width: 100%;color: white;font-size: x-large;font-family: cursive;font-style: normal;"/>
+<input type="submit" name="action" value="T" style=" background-color: Transparent;background-repeat:no-repeat;border: none;cursor:pointer;overflow: hidden;outline:none;height: 7%;width: 100%;color: white;font-size: x-large;font-family: cursive;font-style: normal;"/>
 </form>
 </div >
 <div style="float: left;
@@ -82,6 +83,33 @@ SearchPanel = """method="get" style="margin: 15px;">
     padding: .8em 1em calc(.8em + 3px);
     border-radius: 21px;"/></form>"""
 
+UpdateHashPanel = """<div style="width: fit-content;
+    border: 2px solid mediumblue;
+    margin: 10px;"><form action="tools" enctype="multipart/form-data" method="post">
+<label for="file-upload" style="    border: 2px solid black;
+    width: 200px;
+    height: 30px;
+    border-radius: 21px;
+    outline: none;
+    text-align: center;
+    display: block;
+    margin: 10px;
+    padding-top: 10;">Select hash file
+</label>
+<input id="file-upload" type="file" name="content" style="display:none;">
+<input type="hidden" name="action" value="update_hash"/>
+<input type="submit" value="Update" style="    border: 2px solid black;
+    width: 100px;
+    height: 5%;
+    margin-left: 55px;
+    color: black;
+    outline: none;
+    background-color: white;
+    text-decoration: none;
+    padding: .8em 1em calc(.8em + 3px);
+    border-radius: 21px;
+}">
+</form></div>"""
 UserAccountControl = {"SCRIPT":1,
 "ACCOUNTDISABLE":2,
 "HOMEDIR_REQUIRED":8,
@@ -115,9 +143,52 @@ class Web(tornado.web.RequestHandler):
 			self.ObjDb = sqlite3.connect(Settings["db_name"])
 			self.ObjCursor = self.ObjDb.cursor()
 
+	def post(self):
+		if(self.request.uri[:6] == "/tools"):
+			WritePage = MainPageStart
+			AllInputArg = self.request.arguments
+			if("action" in AllInputArg.keys()):
+				if("update_hash" == self.get_argument("action")):
+					HashUpdateFiles = self.request.files
+					Out = {"update":0,"add":0}
+					if("content" in HashUpdateFiles.keys()):
+						try:
+							HashStr = HashUpdateFiles["content"][0]["body"].decode("utf-8").replace("\n"," ")
+							PwdData = re.findall(r"([^: ]*):[^:]*:([^:]*):([^:]*):\S*:\S*:(\S*)",HashStr)
+						except:
+							PwdData = re.findall(r"([^\n\r:]*):[^:]*:([^:]*):([^:]*):\S*:\S*:(\S*)",HashUpdateFiles["content"][0]["body"].decode("UTF-16LE")[1:])
+						if(len(PwdData) == 0):
+							try:
+								HashStr = HashUpdateFiles["content"][0]["body"].decode("utf-8").replace("\n"," ")
+								HashcatFormat = re.findall(r"([^: ]*):(\S*)",HashStr)
+							except:
+								HashcatFormat = re.findall(r"([^\n\r:]*):(\S*)",HashUpdateFiles["content"][0]["body"].decode("UTF-16LE")[1:])
+							if(len(HashcatFormat) != 0):
+								for CurretHash in HashcatFormat:
+									self.ObjCursor.execute("""UPDATE pwd SET pass='{1}' WHERE NT='{0}'""".format(CurretHash[0],CurretHash[1]))
+								self.ObjDb.commit()
+								WritePage = WritePage + """<div style="margin:10px;">Filename: {0}<br>Format: NT:pass<br>{1} hash updated<br><div>""".format(HashUpdateFiles["content"][0]["filename"],len(HashcatFormat))
+						else:
+							for CurretPwd in PwdData:
+								SelectPwd = self.ObjCursor.execute("""SELECT * FROM pwd WHERE sAMAccountName='{0}'""".format(CurretPwd[0]))
+								CheckPwd = SelectPwd.fetchone()
+								if(CheckPwd == None):
+									self.ObjCursor.execute("""INSERT INTO pwd VALUES ('{0}','{1}','{2}','{3}')""".format(CurretPwd[0],CurretPwd[1],CurretPwd[2],CurretPwd[3]))
+									Out["add"] += 1
+								else:
+									self.ObjCursor.execute("""UPDATE pwd SET LM='{1}',NT='{2}',pass='{3}' WHERE sAMAccountName='{0}'""".format(CurretPwd[0],CurretPwd[1],CurretPwd[2],CurretPwd[3]))
+									Out["update"] += 1
+							self.ObjDb.commit()
+							WritePage = WritePage + """<div style="margin:10px;">Filename: {0}<br>Format: pwd<br>{1} hash added<br>{2} hash updated<br><div>""".format(HashUpdateFiles["content"][0]["filename"],Out["add"],Out["update"])
+			self.write(WritePage+MainPageEnd)
+
 	def get(self):
 		if(self.request.uri == "/"):
 			self.redirect("/home")
+		elif(self.request.uri[:6] == "/tools"):
+			WritePage = MainPageStart
+			WritePage = WritePage + UpdateHashPanel
+			self.write(WritePage+"""</div>"""+MainPageEnd)
 		elif(self.request.uri[:6] == "/users" or self.request.uri[:10] == "/computers" or self.request.uri[:7] == "/groups"):
 			AllInputArg = self.request.arguments
 			if(self.request.uri[:6] == "/users"):
@@ -252,6 +323,11 @@ class Web(tornado.web.RequestHandler):
 			CountPC = self.ObjCursor.execute("""SELECT count(*) FROM computers""")
 			CountPCValue = CountUser.fetchone()
 			WritePage = WritePage + HomePage + "Computers:    {0}</div>".format(CountPCValue[0])
+			CountHash = self.ObjCursor.execute("""SELECT count(*) FROM pwd""")
+			CountHashValue = CountHash.fetchone()
+			CountPass = self.ObjCursor.execute("""SELECT count(*) FROM pwd WHERE pass!=''""")
+			CountPassValue = CountHash.fetchone()
+			WritePage = WritePage + HomePage + "Passwords:    {0}/{1}</div>".format(CountPassValue[0],CountHashValue[0])
 			self.write(WritePage+MainPageEnd)
 		elif(self.request.uri[:8] == "/request"):
 			AllInputArg = self.request.arguments
@@ -259,6 +335,8 @@ class Web(tornado.web.RequestHandler):
 				GetArgAction = self.get_argument("action")
 				if(GetArgAction == "H"):
 					self.redirect("/home")
+				elif(GetArgAction == "T"):
+					self.redirect("/tools")
 				elif(GetArgAction == "U"):
 					self.redirect("/users?offset=0&count={0}".format(self.Settings["obj_count_page"]))
 				elif(GetArgAction == "C"):
@@ -311,7 +389,22 @@ class Reader(object):
 			self.ObjDb = sqlite3.connect(Settings["db_name"])
 			self.ObjCursor = self.ObjDb.cursor()
 
+# sAMAccountType:
+#	- SAM_DOMAIN_OBJECT 0x0
+#	- SAM_GROUP_OBJECT 0x10000000
+#	- SAM_NON_SECURITY_GROUP_OBJECT 0x10000001
+#	- SAM_ALIAS_OBJECT 0x20000000
+#	- SAM_NON_SECURITY_ALIAS_OBJECT 0x20000001
+#	- SAM_USER_OBJECT 0x30000000
+#	- SAM_NORMAL_USER_ACCOUNT 0x30000000
+#	- SAM_MACHINE_ACCOUNT 0x30000001
+#	- SAM_TRUST_ACCOUNT 0x30000002
+#	- SAM_APP_BASIC_GROUP 0x40000000
+#	- SAM_APP_QUERY_GROUP 0x40000001
+#	- SAM_ACCOUNT_TYPE_MAX 0x7fffffff
+
 	def AddObjectDB(self,ADObject):
+		#print(ADObject)
 		descriptionValue = ""
 		if("description" in ADObject.keys()):
 			descriptionValue = ADObject["description"]
@@ -455,6 +548,7 @@ if __name__ == "__main__":
 		(r"/users", Web,dict(Settings=Settings)),
 		(r"/groups", Web,dict(Settings=Settings)),
 		(r"/computers", Web,dict(Settings=Settings)),
+		(r"/tools", Web,dict(Settings=Settings)),
 		])
 	print("> go http://127.0.0.1:16600/")
 	application.listen(16600)
