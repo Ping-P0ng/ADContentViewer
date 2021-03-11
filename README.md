@@ -2,21 +2,21 @@
 
 ADContentViewer is a simple web viewer for active directory objects.
 
-Currently only one format is supported - ADFind default. The search is performed by the parameter sAMAccountName. Hash file must be in the pwd format.
+Currently only one format is supported - ADFind default. The search is performed by the parameter sAMAccountName.
 
-# Install
+# Installation
 
 Install python packages: `pip3 install tornado argparse`
 
-# Use
+# Usage
 
-Example: `python3 ADContentViewer.py -db adcontent.db -u ./test/users.txt -g ./test/groups.txt -c ./test/computers.txt -pwd ./test/dcsync.pwd`
-
-This command parse files content and add to db. Tornado server listening on http://127.0.0.1:16600.
+Tornado server listening on http://127.0.0.1:16600.
 
 Example: `python3 ADContentViewer.py -db adcontent.db`
 
-This command use existing db.
+This command use existing db or create new.
+
+Нou can add objects dumps. via the tools page.
 
 # Screenshots
 
@@ -42,8 +42,11 @@ Info object page.
 
 Tools page.
 
-Two formats are used to update hashes:
-- pwd
-- NT:password (output hashcat)
+Formats used for updating or adding:
+- Hashe
+	- pwd
+	- NT:password (output hashcat)
+- Objects
+	- adfind default
 
 ![Alt text](/image/tools.png?raw=true "Tools page")

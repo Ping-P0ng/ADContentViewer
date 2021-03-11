@@ -20,11 +20,11 @@ MainPageStart = """<html><head>
     box-shadow: 0 0 5px 2px;
 ">
 <form action="request">
-<input type="submit" name="action" value="H" style=" background-color: Transparent;background-repeat:no-repeat;border: none;cursor:pointer;overflow: hidden;outline:none;height: 7%;width: 100%;color: white;font-size: x-large;font-family: cursive;font-style: normal;"/>
-<input type="submit" name="action" value="U" style=" background-color: Transparent;background-repeat:no-repeat;border: none;cursor:pointer;overflow: hidden;outline:none;height: 7%;width: 100%;color: white;font-size: x-large;font-family: cursive;font-style: normal;"/>
-<input type="submit" name="action" value="G" style=" background-color: Transparent;background-repeat:no-repeat;border: none;cursor:pointer;overflow: hidden;outline:none;height: 7%;width: 100%;color: white;font-size: x-large;font-family: cursive;font-style: normal;"/>
-<input type="submit" name="action" value="C" style=" background-color: Transparent;background-repeat:no-repeat;border: none;cursor:pointer;overflow: hidden;outline:none;height: 7%;width: 100%;color: white;font-size: x-large;font-family: cursive;font-style: normal;"/>
-<input type="submit" name="action" value="T" style=" background-color: Transparent;background-repeat:no-repeat;border: none;cursor:pointer;overflow: hidden;outline:none;height: 7%;width: 100%;color: white;font-size: x-large;font-family: cursive;font-style: normal;"/>
+<input type="submit" name="action" value="H" style=" background-color: Transparent;background-repeat:no-repeat;border: none;cursor:pointer;overflow: hidden;outline:none;height: 7%;width: 100%;color: white;font-size: x-large;font-family: unset;font-style: normal;"/>
+<input type="submit" name="action" value="U" style=" background-color: Transparent;background-repeat:no-repeat;border: none;cursor:pointer;overflow: hidden;outline:none;height: 7%;width: 100%;color: white;font-size: x-large;font-family: unset;font-style: normal;"/>
+<input type="submit" name="action" value="G" style=" background-color: Transparent;background-repeat:no-repeat;border: none;cursor:pointer;overflow: hidden;outline:none;height: 7%;width: 100%;color: white;font-size: x-large;font-family: unset;font-style: normal;"/>
+<input type="submit" name="action" value="C" style=" background-color: Transparent;background-repeat:no-repeat;border: none;cursor:pointer;overflow: hidden;outline:none;height: 7%;width: 100%;color: white;font-size: x-large;font-family: unset;font-style: normal;"/>
+<input type="submit" name="action" value="T" style=" background-color: Transparent;background-repeat:no-repeat;border: none;cursor:pointer;overflow: hidden;outline:none;height: 7%;width: 100%;color: white;font-size: x-large;font-family: unset;font-style: normal;"/>
 </form>
 </div >
 <div style="float: left;
@@ -80,10 +80,14 @@ SearchPanel = """method="get" style="margin: 15px;">
      outline: none;
     background-color: white;
     text-decoration: none;
-    padding: .8em 1em calc(.8em + 3px);
     border-radius: 21px;"/></form>"""
 
-UpdateHashPanel = """<div style="width: fit-content;
+UpdateHashPanel = """
+<label style="text-decoration: underline;
+    color: black;
+    font-size: x-large;
+    margin-left: 90px;">Hash</label>
+<div style="width: max-content;
     border: 2px solid mediumblue;
     margin: 10px;"><form action="tools" enctype="multipart/form-data" method="post">
 <label for="file-upload" style="    border: 2px solid black;
@@ -101,14 +105,54 @@ UpdateHashPanel = """<div style="width: fit-content;
 <input type="submit" value="Update" style="    border: 2px solid black;
     width: 100px;
     height: 5%;
-    margin-left: 55px;
+    margin-left: 60px;
+    color: black;
+    outline: none;
+    background-color: white;
+    text-decoration: none;
+    border-radius: 21px;">
+</form></div>"""
+UpdateObjectPanel = """
+<label style="text-decoration: underline;
+    color: black;
+    font-size: x-large;
+    margin-left: 85px;">Object</label>
+<div style="width: max-content;
+    border: 2px solid mediumblue;
+    margin: 10px;">
+<form action="tools" enctype="multipart/form-data" method="post">
+<label for="file-object" style="    border: 2px solid black;
+    width: 200px;
+    height: 30px;
+    border-radius: 21px;
+    outline: none;
+    text-align: center;
+    display: block;
+    margin: 10px;
+    padding-top: 10;">Select object file
+</label>
+<input id="file-object" type="file" name="content" style="display:none;"/>
+<input type="hidden" name="action" value="update_object"/>
+<select id="format" name="format_file" style="border: 2px solid black;
+    border-radius: 21px;
+    display: block;
+    padding: 5px;
+    margin: 10px;
+    outline: none;
+    margin-left: 50px;
+    background-color: white;">
+  <option value="adfind_default">adfind_default</option>
+</select>
+<input type="submit" value="Update" style="    border: 2px solid black;
+    width: 100px;
+    height: 5%;
+    margin-left: 60px;
     color: black;
     outline: none;
     background-color: white;
     text-decoration: none;
     padding: .8em 1em calc(.8em + 3px);
-    border-radius: 21px;
-}">
+    border-radius: 21px;">
 </form></div>"""
 UserAccountControl = {"SCRIPT":1,
 "ACCOUNTDISABLE":2,
@@ -137,8 +181,9 @@ UserAccountControl = {"SCRIPT":1,
 
 
 class Web(tornado.web.RequestHandler):
-	def initialize(self,Settings):
+	def initialize(self,Settings,MainReader):
 		self.Settings = Settings
+		self.MainReader = MainReader
 		if(os.path.exists(Settings["db_name"])):
 			self.ObjDb = sqlite3.connect(Settings["db_name"])
 			self.ObjCursor = self.ObjDb.cursor()
@@ -180,14 +225,27 @@ class Web(tornado.web.RequestHandler):
 									Out["update"] += 1
 							self.ObjDb.commit()
 							WritePage = WritePage + """<div style="margin:10px;">Filename: {0}<br>Format: pwd<br>{1} hash added<br>{2} hash updated<br><div>""".format(HashUpdateFiles["content"][0]["filename"],Out["add"],Out["update"])
-			self.write(WritePage+MainPageEnd)
+						self.write(WritePage)
+				elif("update_object" == self.get_argument("action")):
+					ObjectUpdateFile = self.request.files
+					if("content" in ObjectUpdateFile.keys()):
+						try:
+							ObjectData = ObjectUpdateFile["content"][0]["body"].decode("utf-8")
+						except:
+							ObjectData = ObjectUpdateFile["content"][0]["body"].decode("UTF-16LE")[1:]
+						if(len(ObjectData) != 0):
+							WritePage = WritePage + """<div style="margin:10px;height: 85%;width: 100%;overflow: auto;">"""
+							self.write(WritePage)
+							self.MainReader.GetADObjects(ObjectData.split('\n'),self)
+							self.write("""</div>"""+MainPageEnd)
+			
 
 	def get(self):
 		if(self.request.uri == "/"):
 			self.redirect("/home")
 		elif(self.request.uri[:6] == "/tools"):
 			WritePage = MainPageStart
-			WritePage = WritePage + UpdateHashPanel
+			WritePage = WritePage + UpdateHashPanel + UpdateObjectPanel
 			self.write(WritePage+"""</div>"""+MainPageEnd)
 		elif(self.request.uri[:6] == "/users" or self.request.uri[:10] == "/computers" or self.request.uri[:7] == "/groups"):
 			AllInputArg = self.request.arguments
@@ -231,10 +289,10 @@ class Web(tornado.web.RequestHandler):
 							descriptionValue = "- {0}".format(InfoObject[1])
 						WritePage = WritePage + """<a style="text-decoration: none; color: black;" href="/groups?action=info&object={0}"><div """.format(InfoObject[0])+ObjPage+""">{0} {1}</div></a><br>""".format(InfoObject[0],descriptionValue)
 					NPanel = """<form action="groups" method="get" style="margin: 15px; position: absolute;bottom: 0; right: 0;">"""
-				NPanel = NPanel + """<input type="submit" name="action" value="back" style="border: 2px solid black;width: 70px; height: 38px;    color: black;    outline: none;    background-color: white;    text-decoration: none;    padding: .8em 1em calc(.8em + 3px);    border-radius: 21px;"/>"""
+				NPanel = NPanel + """<input type="submit" name="action" value="back" style="border: 2px solid black;width: 70px; height: 38px;    color: black;    outline: none;    background-color: white;    text-decoration: none;    border-radius: 21px;"/>"""
 				NPanel = NPanel + """<input type="text" name="count" placeholder="Count" value="{0}" style="border: 2px solid black;width: 100px;height: 38px; border-radius: 21px; outline: none;    text-align: center;"/>""".format(GetArgUserCount)
 				NPanel = NPanel + """<input type="hidden" name="offset" value="{0}"/>""".format(GetArgUserOffset)
-				NPanel = NPanel + """<input type="submit" name="action" value="next" style="border: 2px solid black;width: 70px; height: 38px;    color: black;    outline: none;    background-color: white;    text-decoration: none;    padding: .8em 1em calc(.8em + 3px);    border-radius: 21px;"/></form>"""
+				NPanel = NPanel + """<input type="submit" name="action" value="next" style="border: 2px solid black;width: 70px; height: 38px;    color: black;    outline: none;    background-color: white;    text-decoration: none;   border-radius: 21px;"/></form>"""
 				self.write(WritePage+"	</div>"+NPanel+MainPageEnd)
 			elif("action" in AllInputArg.keys()):
 				GetArgAction = self.get_argument("action")
@@ -350,28 +408,23 @@ class Web(tornado.web.RequestHandler):
 				if(CountUserValue != None):
 					self.redirect("/users?action=info&object={0}".format(CountUserValue[0]))
 				CountPC = self.ObjCursor.execute("""SELECT sAMAccountName FROM computers   WHERE dn='{0}'""".format(GetArgAction))
-				CountPCValue = CountUser.fetchone()
+				CountPCValue = CountPC.fetchone()
 				if(CountPCValue != None):
 					self.redirect("/computers?action=info&object={0}".format(CountPCValue[0]))
 				CountGroup = self.ObjCursor.execute("""SELECT sAMAccountName FROM groups   WHERE dn='{0}'""".format(GetArgAction))
-				CountGroupValue = CountUser.fetchone()
+				CountGroupValue = CountGroup.fetchone()
 				if(CountGroupValue != None):
 					self.redirect("/groups?action=info&object={0}".format(CountGroupValue[0]))
+				else:
+					WritePage = MainPageStart + """<div style="margin: 10px;">Object not found</div>""" + MainPageEnd
+					self.write(WritePage)
 
 
 
 class Reader(object):
-	def __init__(self,ADInfoFilesPath,Settings):
+	def __init__(self,Settings):
 		self.ADInfoFiles = {}
 		self.Settings = Settings
-		for CurrentKey in ADInfoFilesPath.keys():
-			if(os.path.exists(ADInfoFilesPath[CurrentKey]) and os.path.isfile(ADInfoFilesPath[CurrentKey])):
-				print("+ > {0}".format(ADInfoFilesPath[CurrentKey]))
-				self.ADInfoFiles[CurrentKey] = ADInfoFilesPath[CurrentKey]
-			else:
-				print("- > {0}".format(ADInfoFilesPath[CurrentKey]))
-				print("> File not found")
-
 		if(os.path.isdir(Settings["db_name"])):
 			sys.exit("> {0} - it directory".format(Settings["db_name"]))
 		if(not os.path.exists(Settings["db_name"])):
@@ -409,118 +462,109 @@ class Reader(object):
 		if("description" in ADObject.keys()):
 			descriptionValue = ADObject["description"]
 		if(int(ADObject["sAMAccountType"]) == 805306368): # user object
-			SelectUser = self.ObjCursor.execute("""SELECT sAMAccountName FROM users WHERE sAMAccountName='{0}'""".format(ADObject["sAMAccountName"]))
-			CheckUser = SelectUser.fetchone()
-			if(CheckUser == None):
+			SelectObj = self.ObjCursor.execute("""SELECT sAMAccountName FROM users WHERE sAMAccountName='{0}'""".format(ADObject["sAMAccountName"]))
+			CheckObj = SelectObj.fetchone()
+			if(CheckObj == None):
 				self.ObjCursor.execute("""INSERT INTO users VALUES ('{0}','{1}',{2},'{3}','{4}')""".format(ADObject["dn"],ADObject["sAMAccountName"],ADObject["userAccountControl"],descriptionValue,json.dumps(ADObject)))
 				self.ObjDb.commit()
-				print("\t> add object - {0}".format(ADObject["dn"]))
-			elif(len(CheckUser) == 1):
-				print("\t> object exist - {0}".format(ADObject["dn"]))
+				return("user","add")
+			elif(len(CheckObj) == 1):
+				self.ObjCursor.execute("""UPDATE users SET sAMAccountName='{1}', userAccountControl={2}, description='{3}', FullData='{4}' WHERE dn='{0}'""".format(ADObject["dn"],ADObject["sAMAccountName"],ADObject["userAccountControl"],descriptionValue,json.dumps(ADObject)))
+				self.ObjDb.commit()
+				return("user","update")
 			else:
-				print("\t- > fail check object - {0}".format(ADObject["dn"]))
+				return("user","fail")
 		elif(int(ADObject["sAMAccountType"]) == 805306369): # computer object
-			SelectUser = self.ObjCursor.execute("""SELECT sAMAccountName FROM computers WHERE sAMAccountName='{0}'""".format(ADObject["sAMAccountName"]))
-			CheckUser = SelectUser.fetchone()
-			if(CheckUser == None):
+			SelectObj = self.ObjCursor.execute("""SELECT sAMAccountName FROM computers WHERE sAMAccountName='{0}'""".format(ADObject["sAMAccountName"]))
+			CheckObj = SelectObj.fetchone()
+			if(CheckObj == None):
 				self.ObjCursor.execute("""INSERT INTO computers VALUES ('{0}','{1}',{2},'{3}','{4}')""".format(ADObject["dn"],ADObject["sAMAccountName"],ADObject["userAccountControl"],descriptionValue,json.dumps(ADObject)))
 				self.ObjDb.commit()
-				print("\t> add object - {0}".format(ADObject["dn"]))
-			elif(len(CheckUser) == 1):
-				print("\t> object exist - {0}".format(ADObject["dn"]))
+				return("computer","add")
+			elif(len(CheckObj) == 1):
+				self.ObjCursor.execute("""UPDATE computers SET sAMAccountName='{1}', userAccountControl={2}, description='{3}', FullData='{4}' WHERE dn='{0}'""".format(ADObject["dn"],ADObject["sAMAccountName"],ADObject["userAccountControl"],descriptionValue,json.dumps(ADObject)))
+				self.ObjDb.commit()
+				return("computer","update")
 			else:
-				print("\t- > fail check object - {0}".format(ADObject["dn"]))
+				return("computer","fail")
 		elif(int(ADObject["sAMAccountType"]) == 536870912 or int(ADObject["sAMAccountType"]) == 268435456): # group object
-			SelectUser = self.ObjCursor.execute("""SELECT sAMAccountName FROM groups WHERE sAMAccountName='{0}'""".format(ADObject["sAMAccountName"]))
-			CheckUser = SelectUser.fetchone()
-			if(CheckUser == None):
+			SelectObj = self.ObjCursor.execute("""SELECT sAMAccountName FROM groups WHERE sAMAccountName='{0}'""".format(ADObject["sAMAccountName"]))
+			CheckObj = SelectObj.fetchone()
+			if(CheckObj == None):
 				self.ObjCursor.execute("""INSERT INTO groups VALUES ('{0}','{1}','{2}','{3}')""".format(ADObject["dn"],ADObject["sAMAccountName"],descriptionValue,json.dumps(ADObject)))
 				self.ObjDb.commit()
-				print("\t> add object - {0}".format(ADObject["dn"]))
-			elif(len(CheckUser) == 1):
-				print("\t> object exist - {0}".format(ADObject["dn"]))
+				return("group","add")
+			elif(len(CheckObj) == 1):
+				self.ObjCursor.execute("""UPDATE groups SET sAMAccountName='{1}', description='{2}', FullData='{3}' WHERE dn='{0}'""".format(ADObject["dn"],ADObject["sAMAccountName"],descriptionValue,json.dumps(ADObject)))
+				self.ObjDb.commit()
+				return("group","update")
 			else:
-				print("\t- > fail check object - {0}".format(ADObject["dn"]))
+				return("group","fail")
 
-
-	def GetADObjects(self):
+	def GetADObjects(self,ObjFile,WebObj):
+		self.WebObj = WebObj
+		ResultObject = {"user":{"add":0,"update":0,"fail":0},"group":{"add":0,"update":0,"fail":0},"computer":{"add":0,"update":0,"fail":0}}
 		if(self.Settings["format"] == "ADFind_default"):
-			encodings = ['utf-8','UTF-16LE']
-			for CurrentKey in self.ADInfoFiles.keys():
-				if(CurrentKey != "pwd"):
-					print("> check {0}".format(self.ADInfoFiles[CurrentKey]))
-					for e in encodings:
-						try:
-							ObjFile = open(self.ADInfoFiles[CurrentKey],"r",encoding=e)
-							ObjFile.readlines()
-							ObjFile.seek(0)
-						except UnicodeDecodeError:
-							print('> got unicode error with %s , trying different encoding' % e)
-						else:
-							print('> opening the file with encoding:  %s ' % e)
-							break
-					ObjData = {}
-					CheckFirstObj = False
-					for CurrentLine in ObjFile:
-						SplitLine = CurrentLine[:-1].split(':')
-						if(len(SplitLine) == 2):
-							if(CheckFirstObj == False):
-								if(SplitLine[0] == "dn"):
-									CheckFirstObj = True
-									if(ObjData != {}):
-										self.AddObjectDB(ObjData)
-									ObjData = {}
-									ObjData[SplitLine[0]] = SplitLine[1]
+			ObjData = {}
+			CheckFirstObj = False
+			for CurrentLine in ObjFile:
+				SplitLine = CurrentLine[:-1].split(':')
+				if(len(SplitLine) == 2):
+					if(CheckFirstObj == False):
+						if(SplitLine[0] == "dn"):
+							CheckFirstObj = True
+							if(ObjData != {}):
+								ResultAdd = self.AddObjectDB(ObjData)
+								if(ResultAdd[1] == "add"):
+									ResultObject[ResultAdd[0]]["add"] += 1 
+								elif(ResultAdd[1] == "update"):
+									ResultObject[ResultAdd[0]]["update"] += 1 
+								elif(ResultAdd[1] == "fail"):
+									ResultObject[ResultAdd[0]]["fail"] += 1 
+							ObjData = {}
+							ObjData[SplitLine[0]] = SplitLine[1]
+					else:
+						if(SplitLine[0] == "dn"):
+							if(ObjData != {}):
+								ResultAdd = self.AddObjectDB(ObjData)
+								if(ResultAdd[1] == "add"):
+									ResultObject[ResultAdd[0]]["add"] += 1 
+								elif(ResultAdd[1] == "update"):
+									ResultObject[ResultAdd[0]]["update"] += 1 
+								elif(ResultAdd[1] == "fail"):
+									ResultObject[ResultAdd[0]]["fail"] += 1 
+							ObjData = {}
+							ObjData[SplitLine[0]] = SplitLine[1]
+						elif(SplitLine[0][1:] == "memberOf" 
+							or SplitLine[0][1:] == "member" 
+							or SplitLine[0][1:] == "servicePrincipalName"
+							or SplitLine[0][1:] == "objectClass"):
+							if(SplitLine[0][1:] not in ObjData.keys()):
+								ObjData[SplitLine[0][1:]] = [SplitLine[1][1:]]
 							else:
-								if(SplitLine[0] == "dn"):
-									if(ObjData != {}):
-										self.AddObjectDB(ObjData)
-									ObjData = {}
-									ObjData[SplitLine[0]] = SplitLine[1]
-								elif(SplitLine[0][1:] == "memberOf" 
-									or SplitLine[0][1:] == "member" 
-									or SplitLine[0][1:] == "servicePrincipalName"
-									or SplitLine[0][1:] == "objectClass"):
-									if(SplitLine[0][1:] not in ObjData.keys()):
-										ObjData[SplitLine[0][1:]] = [SplitLine[1][1:]]
-									else:
-										ObjData[SplitLine[0][1:]].append(SplitLine[1][1:])
-								else:
-									ObjData[SplitLine[0][1:]] = SplitLine[1][1:]
-					if(ObjData != {}):
-						self.AddObjectDB(ObjData)
-				elif(CurrentKey == "pwd"):
-					print("> check {0}".format(self.ADInfoFiles[CurrentKey]))
-					for e in encodings:
-						try:
-							PwdFile = open(self.ADInfoFiles[CurrentKey],"r",encoding=e)
-							PwdFile.readlines()
-							PwdFile.seek(0)
-						except UnicodeDecodeError:
-							print('> got unicode error with %s , trying different encoding' % e)
+								ObjData[SplitLine[0][1:]].append(SplitLine[1][1:])
 						else:
-							print('> opening the file with encoding:  %s ' % e)
-							break
-					for CurrentLine in PwdFile:
-						PwdData = re.findall(r"^([^:]*):[^:]*:([^:]*):([^:]*):\S*:\S*:(\S*)",CurrentLine)
-						SelectPwd = self.ObjCursor.execute("""SELECT sAMAccountName FROM pwd WHERE sAMAccountName='{0}'""".format(PwdData[0][0]))
-						CheckPwd = SelectPwd.fetchone()
-						if(CheckPwd == None):
-							self.ObjCursor.execute("""INSERT INTO pwd VALUES ('{0}','{1}','{2}','{3}')""".format(PwdData[0][0],PwdData[0][1],PwdData[0][2],PwdData[0][3]))
-							self.ObjDb.commit()
-							print("\t> add {0} hash".format(PwdData[0][0]))
-						else:
-							print("\t> exist {0} hash".format(PwdData[0][0]))
+							ObjData[SplitLine[0][1:]] = SplitLine[1][1:]
+			if(ObjData != {}):
+				ResultAdd = self.AddObjectDB(ObjData)
+				if(ResultAdd[1] == "add"):
+					ResultObject[ResultAdd[0]]["add"] += 1 
+				elif(ResultAdd[1] == "update"):
+					ResultObject[ResultAdd[0]]["update"] += 1 
+				elif(ResultAdd[1] == "fail"):
+					ResultObject[ResultAdd[0]]["fail"] += 1 
+			if(ResultObject["user"]["add"] != 0 or ResultObject["user"]["update"] != 0 or ResultObject["user"]["fail"] != 0):
+				self.WebObj.write("User object:<br>- {0} add<br>- {1} update<br>- {2} fail".format(ResultObject["user"]["add"],ResultObject["user"]["update"],ResultObject["user"]["fail"]))
+			elif(ResultObject["group"]["add"] != 0 or ResultObject["group"]["update"] != 0 or ResultObject["group"]["fail"] != 0):
+				self.WebObj.write("Group object:<br>- {0} add<br>- {1} update<br>- {2} fail".format(ResultObject["group"]["add"],ResultObject["group"]["update"],ResultObject["group"]["fail"]))
+			elif(ResultObject["computer"]["add"] != 0 or ResultObject["computer"]["update"] != 0 or ResultObject["computer"]["fail"] != 0):
+				self.WebObj.write("Computer object:<br>- {0} add<br>- {1} update<br>- {2} fail".format(ResultObject["computer"]["add"],ResultObject["computer"]["update"],ResultObject["computer"]["fail"]))
 # ADInfo file format:
 # 	- ADFind_default
 #
 
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser("ADContentViewer")
-	parser.add_argument("-c","--computers", help="computers file path")
-	parser.add_argument("-u","--users", help="users file path")
-	parser.add_argument("-g","--groups", help="groups file path")
-	parser.add_argument("-pwd","--pwd", help="hash file (pwd format)")
 	parser.add_argument("-db", help="db file name (default: adinfo.db)")
 	args = parser.parse_args()
 	if(args.db == None):
@@ -530,25 +574,15 @@ if __name__ == "__main__":
 	Settings = {"format":"ADFind_default",
 		"db_name":OutSqlFile,
 		"obj_count_page":"10"}
-	ADInfoFilesPath = {}
-	if(args.users != None):
-		ADInfoFilesPath["users"] = args.users
-	if(args.groups != None):
-		ADInfoFilesPath["groups"] = args.groups
-	if(args.computers != None):
-		ADInfoFilesPath["computers"] = args.computers
-	if(args.pwd != None):
-		ADInfoFilesPath["pwd"] = args.pwd
-	MainReader = Reader(ADInfoFilesPath,Settings)
-	MainReader.GetADObjects()
+	MainReader = Reader(Settings)
 	application = tornado.web.Application([
-		(r"/", Web,dict(Settings=Settings)),
-		(r"/home", Web,dict(Settings=Settings)),
-		(r"/request", Web,dict(Settings=Settings)),
-		(r"/users", Web,dict(Settings=Settings)),
-		(r"/groups", Web,dict(Settings=Settings)),
-		(r"/computers", Web,dict(Settings=Settings)),
-		(r"/tools", Web,dict(Settings=Settings)),
+		(r"/", Web,dict(Settings=Settings,MainReader=MainReader)),
+		(r"/home", Web,dict(Settings=Settings,MainReader=MainReader)),
+		(r"/request", Web,dict(Settings=Settings,MainReader=MainReader)),
+		(r"/users", Web,dict(Settings=Settings,MainReader=MainReader)),
+		(r"/groups", Web,dict(Settings=Settings,MainReader=MainReader)),
+		(r"/computers", Web,dict(Settings=Settings,MainReader=MainReader)),
+		(r"/tools", Web,dict(Settings=Settings,MainReader=MainReader)),
 		])
 	print("> go http://127.0.0.1:16600/")
 	application.listen(16600)
